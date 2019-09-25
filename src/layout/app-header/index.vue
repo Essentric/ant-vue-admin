@@ -1,21 +1,39 @@
 <template>
-  <a-icon
-    class="trigger"
-    :type="collapsed ? 'menu-unfold' : 'menu-fold'"
-    @click="TOGGLE_SIDEBAR"
-  />
+  <div class="header-wrap">
+    <div class="header-l">
+      <sidebar-collapse />
+      面包屑
+    </div>
+    <ul class="header-menu">
+      <li class="menu-item">
+        <a-icon class="fullscreen-icon" type="fullscreen" />
+        <!-- <a-icon type="fullscreen-exit" /> -->
+      </li>
+      <li class="menu-item">
+        <a-badge count="15" :offset="[0, -2]">
+          <a-icon class="bell-icon" type="bell" />
+        </a-badge>
+      </li>
+      <li class="menu-item user-info">
+        <dropdown-menu />
+      </li>
+      <li class="menu-item">
+        <a-icon type="global" />
+      </li>
+    </ul>
+  </div>
+
 </template>
 
 <script>
-import { mapState, mapMutations } from 'vuex';
+import SidebarCollapse from './components/SidebarCollapse';
+import DropdownMenu from './components/DropdownMenu';
 
 export default {
   name: 'AppHeader',
-  computed: {
-    ...mapState(['collapsed']),
-  },
-  methods: {
-    ...mapMutations(['TOGGLE_SIDEBAR']),
+  components: {
+    SidebarCollapse,
+    DropdownMenu,
   },
 };
 </script>

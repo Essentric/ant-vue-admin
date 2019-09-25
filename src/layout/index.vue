@@ -5,7 +5,10 @@
       collapsible
       v-model="collapse"
     >
-      <div class="logo" />
+      <div :class="['logo', { 'logo-collapsed': collapse }]">
+        <a-icon :class="['logo-icon']" type="heat-map" />
+        <span> Vue-Ant</span>
+      </div>
       <app-sidebar />
     </a-layout-sider>
     <a-layout>
@@ -36,6 +39,7 @@ export default {
   },
   computed: {
     ...mapState(['collapsed']),
+    // vuex 对 v-model 的解决方案
     collapse: {
       get() {
         return this.collapsed;

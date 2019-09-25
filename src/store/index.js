@@ -8,6 +8,7 @@ export default new Vuex.Store({
     collapsed: false, // 侧边栏的显示/隐藏
   },
   mutations: {
+    // 切换 collapsed 值
     TOGGLE_SIDEBAR(state) {
       state.collapsed = !state.collapsed;
     },

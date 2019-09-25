@@ -1,21 +1,75 @@
 #app { height: 100%; }
+
 #container {
   height: 100%;
-  .trigger {
-    font-size: 18px;
-    line-height: 64px;
-    padding: 0 24px;
-    cursor: pointer;
-    transition: color .3s;
-  }
-
-  .trigger:hover {
-    color: #1890ff;
-  }
-
   .logo {
+    overflow: hidden;
     height: 32px;
-    background: rgba(255,255,255,.2);
+    line-height: 32px;
     margin: 16px;
+    background: rgba(255,255,255,.2);
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+    transition: all .5s ease-in-out;
+    > .logo-icon {
+      font-size: 1.5em;
+    }
+  }
+
+  .logo-collapsed {
+    background: rgba(255,255,255, 0);
+    transform: scale(1.5) rotate(360deg);
+    > .logo-text {
+      opacity: 0;
+    }
+  }
+
+  .header-wrap {
+    display: flex;
+    padding: 0 16px;
+    justify-content: space-between;
+    align-items: center;
+
+    .trigger {
+      font-size: 18px;
+      // line-height: 64px;
+      padding: 0 24px 0 0;
+      cursor: pointer;
+      transition: color .3s;
+    }
+
+    .trigger:hover {
+      color: #1890ff;
+    }
+
+    > .header-menu {
+      display: inline-flex;
+      > li.menu-item {
+        padding: 0 15px;
+        font-size: 16px;
+        transition: all .5s;
+        &:hover {
+          cursor: pointer;
+          background: #eee;
+        }
+      }
+      .bell-icon {
+        font-size: 16px;
+        padding: 4px;
+      }
+      > li.user-info {
+        .user-name {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          .user-pic {
+            max-height: 30px;
+            border-radius: 50%;
+            margin-left: 10px;
+          }
+        }
+      }
+    }
   }
 }
