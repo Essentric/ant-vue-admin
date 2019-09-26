@@ -13,6 +13,8 @@ export const commonRoutes = [
   },
 ];
 
+// export const async
+
 // 创建路由
 const createRouter = () => new Router({
   scrollBehavior: () => ({ x: 0, y: 0 }),

@@ -4,10 +4,11 @@
       :trigger="null"
       collapsible
       v-model="collapse"
+      :style="collapse ? null : sidebarStyle"
     >
       <div :class="['logo', { 'logo-collapsed': collapse }]">
-        <a-icon :class="['logo-icon']" type="heat-map" />
-        <span> Vue-Ant</span>
+        <a-icon :class="['logo-icon']" type="ant-design" />
+        <h1 class="logo-text"> Vue-Ant</h1>
       </div>
       <app-sidebar />
     </a-layout-sider>
@@ -47,6 +48,14 @@ export default {
       set() {
         this.TOGGLE_SIDEBAR();
       },
+    },
+    sidebarStyle() {
+      return {
+        flex: '0 0 256px',
+        maxWidth: '256px',
+        minWidth: '256px',
+        width: '256px',
+      };
     },
   },
   methods: {
