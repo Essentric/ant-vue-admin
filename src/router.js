@@ -7,6 +7,11 @@ Vue.use(Router);
 export const commonRoutes = [
   {
     path: '/',
+    name: 'login',
+    component: () => import('./views/login'),
+  },
+  {
+    path: '/',
     name: 'home',
     component: () => import('./layout'),
     meta: { title: '首页', icon: 'home' },
