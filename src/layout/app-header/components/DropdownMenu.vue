@@ -6,7 +6,7 @@
     </div>
     <a-menu slot="overlay">
       <a-menu-item key="0">
-        <a href="http://www.alipay.com/"><a-icon type="setting" />首页</a>
+        <a href="http://www.alipay.com/"><a-icon type="setting" /> 首 页</a>
       </a-menu-item>
       <a-menu-item key="1">
         <a href="http://www.taobao.com/"><a-icon type="user" />个人主页</a>

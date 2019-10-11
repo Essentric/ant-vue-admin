@@ -6,7 +6,7 @@ Vue.use(Router);
 // 公共路由
 export const commonRoutes = [
   {
-    path: '/',
+    path: '/login',
     name: 'login',
     component: () => import('./views/login'),
   },

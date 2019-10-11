@@ -11,7 +11,14 @@
           <label class="label">Password</label>
         </li>
         <li class="form-item">
-          <button class="login-button" @click="handleLogin">Login</button>
+          <button
+            :style="{ 'cursor': loading ? 'not-allowed' : 'pointer' }"
+            :disabled="loading"
+            class="login-button"
+            @click="handleLogin"
+          >
+            <a-icon v-show="loading" type="sync" :spin="loading" /> Login
+          </button>
         </li>
       </ul>
     </div>
@@ -19,10 +26,13 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+
 export default {
   name: 'Login',
   data() {
     return {
+      loading: false,
       loginForm: {
         username: '',
         password: '',
@@ -30,7 +40,22 @@ export default {
     };
   },
   methods: {
-    handleLogin() {},
+    ...mapActions(['login']),
+    handleLogin() {
+      const { username, password } = this.loginForm;
+      if (!username || !password) {
+        this.$message.warning('请输入用户名或密码');
+        return;
+      }
+      this.loading = true;
+      this.login(this.loginForm)
+        .then((response) => {
+          this.$message.success(response.data.msg, 1.5, () => {
+            this.$router.push({ name: 'home' });
+          });
+        }, () => this.$message.error('登录失败'))
+        .finally(() => { this.loading = false; });
+    },
   },
 };
 </script>
