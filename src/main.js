@@ -7,6 +7,8 @@ import Antd from './libs/antd-component';
 import axios from './libs/axios';
 import './style/index.scss';
 
+require('./mock');
+
 Vue.config.productionTip = false;
 
 Vue.use(Antd); // 引入 antd 组件

@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
+import store from './store';
 
 Vue.use(Router);
 
@@ -27,5 +28,34 @@ const createRouter = () => new Router({
 });
 
 const router = createRouter();
+
+router.beforeEach(async (to, from, next) => {
+  if (to.name !== 'login') {
+    if (store.state.token) {
+      console.log('role: ', store.getters.role);
+      if (store.getters.role && store.getters.role.length > 0) {
+        next();
+      } else {
+        try {
+          const response = await store.dispatch('getUser');
+          const { role } = response.data.data;
+          console.log(role);
+          next({ ...to, replace: true });
+        } catch (error) {
+          console.log(error, 123);
+        }
+      }
+    } else {
+      next({
+        name: 'login',
+        query: {
+          redirect: to.fullPath,
+        },
+      });
+    }
+  } else {
+    next();
+  }
+});
 
 export default router;
