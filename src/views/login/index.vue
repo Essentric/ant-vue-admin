@@ -40,7 +40,7 @@ export default {
     };
   },
   methods: {
-    ...mapActions(['login']),
+    ...mapActions('auth', ['login']),
     handleLogin() {
       const { username, password } = this.loginForm;
       if (!username || !password) {

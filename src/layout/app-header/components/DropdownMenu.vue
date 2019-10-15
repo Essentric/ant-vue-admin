@@ -23,7 +23,7 @@ import { mapMutations } from 'vuex';
 export default {
   name: 'DropdownMenu',
   methods: {
-    ...mapMutations(['LOG_OUT']),
+    ...mapMutations('auth', ['LOG_OUT']),
     handleLogout() {
       this.LOG_OUT();
       this.$router.push({ name: 'login' });

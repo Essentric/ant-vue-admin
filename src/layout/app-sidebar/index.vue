@@ -7,17 +7,18 @@
     :inlineCollapsed="collapsed"
     style="padding: 10px 0"
   >
-    <template v-for="item in list">
-      <a-menu-item v-if="!item.children" :key="item.key">
+    <template v-for="item in userRoutes">
+      <a-menu-item v-if="!item.children" :key="item.name">
         <a-icon type="pie-chart" />
-        <span>{{item.title}}</span>
+        <span>{{item.meta['title']}}</span>
       </a-menu-item>
-      <sub-menu v-else :menu-info="item" :key="item.key"/>
+      <sub-menu v-else :menu-info="item" :key="item.name"/>
     </template>
   </a-menu>
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import SubMenu from './components/SubMenu';
 
 export default {
@@ -50,6 +51,9 @@ export default {
         },
       ],
     };
+  },
+  computed: {
+    ...mapState('auth', ['userRoutes']),
   },
   methods: {
     toggleCollapsed() {

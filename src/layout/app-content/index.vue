@@ -1,5 +1,9 @@
 <template>
-  <div>content</div>
+  <transition name="fade-page" mode="out-in">
+    <keep-alive>
+      <router-view />
+    </keep-alive>
+  </transition>
 </template>
 
 <script>

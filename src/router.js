@@ -19,6 +19,39 @@ export const commonRoutes = [
   },
 ];
 
+// 需动态添加的路由
+export const asyncRoutes = [
+  {
+    path: '/list',
+    name: 'list',
+    component: () => import('./views/list'),
+    meta: { title: '列表', icon: 'list' },
+    children: [
+      {
+        path: 'sampleList',
+        name: 'sampleList',
+        component: () => import('./views/list/sampleList'),
+        meta: { title: '简单列表', icon: 'list' },
+      },
+    ],
+  },
+  {
+    path: '/form',
+    name: 'form',
+    component: () => import('./views/form'),
+    redirect: 'sampleForm',
+    meta: { title: '表单', icon: 'form' },
+    children: [
+      {
+        path: 'sampleForm',
+        name: 'sampleForm',
+        component: () => import('./views/form/sampleForm'),
+        meta: { title: '简略表单', icon: 'form' },
+      },
+    ],
+  },
+];
+
 // export const async
 
 // 创建路由
@@ -31,15 +64,18 @@ const router = createRouter();
 
 router.beforeEach(async (to, from, next) => {
   if (to.name !== 'login') {
-    if (store.state.token) {
-      console.log('role: ', store.getters.role);
-      if (store.getters.role && store.getters.role.length > 0) {
+    if (store.state.auth.token) {
+      console.log('role: ', store.getters['auth/role']);
+      if (store.getters['auth/role'] && store.getters['auth/role'].length > 0) {
         next();
       } else {
         try {
-          const response = await store.dispatch('getUser');
+          const response = await store.dispatch('auth/getUser');
           const { role } = response.data.data;
           console.log(role);
+          console.log(store);
+          store.commit('auth/SER_ASYNC_ROUTE', asyncRoutes);
+          router.addRoutes(store.state.auth.userRoutes);
           next({ ...to, replace: true });
         } catch (error) {
           console.log(error, 123);
