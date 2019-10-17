@@ -16,6 +16,7 @@ export const commonRoutes = [
     name: 'home',
     component: () => import('./layout'),
     meta: { title: '首页', icon: 'home' },
+    // children: [],
   },
 ];
 
@@ -60,7 +61,26 @@ const createRouter = () => new Router({
   routes: commonRoutes,
 });
 
-const router = createRouter();
+const router = createRouter(asyncRoutes);
+
+const resetRouter = () => {
+  const Router = createRouter();
+  router.matcher = Router.matcher;
+  router.addRoutes([
+    {
+      path: '/',
+      name: 'home',
+      component: () => import('./layout'),
+      meta: { title: '首页', icon: 'home' },
+      children: [
+        ...asyncRoutes,
+        {
+          path: '*', name: '*', redirect: '/404', hidden: true,
+        },
+      ],
+    },
+  ]);
+};
 
 router.beforeEach(async (to, from, next) => {
   if (to.name !== 'login') {
@@ -75,7 +95,7 @@ router.beforeEach(async (to, from, next) => {
           console.log(role);
           console.log(store);
           store.commit('auth/SER_ASYNC_ROUTE', asyncRoutes);
-          router.addRoutes(store.state.auth.userRoutes);
+          resetRouter(store.state.auth.userRoutes);
           next({ ...to, replace: true });
         } catch (error) {
           console.log(error, 123);

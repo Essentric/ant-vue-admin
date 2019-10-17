@@ -13,13 +13,8 @@
       <app-sidebar />
     </a-layout-sider>
     <a-layout>
-      <a-layout-header style="background: #fff; padding: 0">
-        <app-header />
-      </a-layout-header>
-      <a-layout-content :style="{ margin: '24px 16px', padding: '24px', background: '#fff', minHeight: '280px' }">
-        <app-content />
-        <!-- <router-view></router-view> -->
-      </a-layout-content>
+      <AppHeader />
+      <AppContent />
     </a-layout>
   </a-layout>
 </template>
