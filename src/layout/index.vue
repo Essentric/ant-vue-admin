@@ -1,5 +1,5 @@
 <template>
-  <a-layout id="container">
+  <!-- <a-layout id="container">
     <a-layout-sider
       :trigger="null"
       collapsible
@@ -16,7 +16,14 @@
       <AppHeader />
       <AppContent />
     </a-layout>
-  </a-layout>
+  </a-layout> -->
+  <div class="layout-container">
+    <AppSidebar />
+    <div class="layout-content">
+      <AppHeader />
+      <AppContent />
+    </div>
+  </div>
 </template>
 
 

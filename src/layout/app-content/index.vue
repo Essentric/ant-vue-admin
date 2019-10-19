@@ -1,11 +1,11 @@
 <template>
-  <transition name="fade-page" mode="out-in">
-    <keep-alive>
-      <a-layout-content :style="{ margin: '24px 16px', padding: '24px', background: 'transplate', minHeight: '280px' }">
+  <div class="layout-main">
+    <transition name="fade-page" mode="out-in">
+      <keep-alive>
         <router-view />
-      </a-layout-content>
-    </keep-alive>
-  </transition>
+      </keep-alive>
+    </transition>
+  </div>
 </template>
 
 <script>
