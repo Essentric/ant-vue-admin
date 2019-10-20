@@ -28,7 +28,6 @@
 
 
 <script>
-import { mapState, mapMutations } from 'vuex';
 
 import AppHeader from './app-header';
 import AppContent from './app-content';
@@ -40,29 +39,6 @@ export default {
     AppHeader,
     AppContent,
     AppSidebar,
-  },
-  computed: {
-    ...mapState(['collapsed']),
-    // vuex 对 v-model 的解决方案
-    collapse: {
-      get() {
-        return this.collapsed;
-      },
-      set() {
-        this.TOGGLE_SIDEBAR();
-      },
-    },
-    sidebarStyle() {
-      return {
-        flex: '0 0 256px',
-        maxWidth: '256px',
-        minWidth: '256px',
-        width: '256px',
-      };
-    },
-  },
-  methods: {
-    ...mapMutations(['TOGGLE_SIDEBAR']),
   },
 };
 </script>
