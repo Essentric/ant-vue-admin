@@ -23,6 +23,7 @@
       <AppHeader />
       <AppContent />
     </div>
+    <AppDrawer />
   </div>
 </template>
 
@@ -32,6 +33,8 @@
 import AppHeader from './app-header';
 import AppContent from './app-content';
 import AppSidebar from './app-sidebar';
+import AppDrawer from './app-drawer';
+
 
 export default {
   name: 'layout',
@@ -39,6 +42,7 @@ export default {
     AppHeader,
     AppContent,
     AppSidebar,
+    AppDrawer,
   },
 };
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <div class="layout-sidebar">
+  <div :class="['layout-sidebar', { 'layout-sidebar-fixed': siderFixed, 'sider-fixed-collapsed': siderFixed && collapse }]">
     <a-layout-sider
       :trigger="null"
       collapsible
@@ -66,7 +66,7 @@ export default {
   },
   computed: {
     ...mapState('auth', ['userRoutes']),
-    ...mapState(['collapsed']),
+    ...mapState(['collapsed', 'siderFixed']),
     // vuex 对 v-model 的解决方案
     collapse: {
       get() {

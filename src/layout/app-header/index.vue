@@ -1,6 +1,6 @@
 <template>
 <!--  layout-header-fixed -->
-  <div class="layout-header layout-header-fixed">
+  <div :class="['layout-header', { 'layout-header-fixed': headerFixed, 'header-fixed-collapsed': headerFixed && collapsed }]">
     <div class="header-bread">
       <sidebar-collapse />
       面包屑
@@ -26,6 +26,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import SidebarCollapse from './components/SidebarCollapse';
 import DropdownMenu from './components/DropdownMenu';
 
@@ -34,6 +35,9 @@ export default {
   components: {
     SidebarCollapse,
     DropdownMenu,
+  },
+  computed: {
+    ...mapState(['headerFixed', 'collapsed']),
   },
 };
 </script>

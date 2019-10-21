@@ -12,13 +12,8 @@
     // width: $sidebar-width;
     .ant-layout-sider {
       height: 100%;
+      box-shadow: 2px 0 6px rgba(0,21,41,.35);
     }
-    // .ant-layout-sider-collapsed {
-    //   flex: 0 0 $sidebar-collapsed-width !important;
-    //   max-width: $sidebar-collapsed-width !important;
-    //   min-width: $sidebar-collapsed-width !important;
-    //   width: $sidebar-collapsed-width !important;
-    // }
     .ant-menu {
       height: calc(100% - $header-height);
       padding: 5px 0;
@@ -63,17 +58,20 @@
   .layout-sidebar-fixed {
     height: 100%;
     position: fixed;
-    z-index: 1;
+    z-index: 2;
 
     & + .layout-content {
-      margin-left: 256px;
+      margin-left: $sidebar-width;
+      transition: all .2s;
     }
   }
 
-  // 侧边栏收起时生效
-  // .ant-layout-sider-collapsed {
-
-  // }
+  // 侧边固定且收起时生效
+  .sider-fixed-collapsed {
+    & + .layout-content {
+      margin-left: $sidebar-collapsed-width;
+    }
+  }
 
   /***** 主体内容 *****/
   .layout-content {
@@ -87,16 +85,19 @@
       justify-content: space-between;
       align-items: center;
       background: #fff;
+      box-shadow: 0 1px 4px rgba(0,21,41,.08);
 
       .trigger {
         display: inline-flex;
         align-items: center;
         font-size: 18px;
-        padding: 10px 10px;
+        height: 100%;
+        padding: 0 20px;
         cursor: pointer;
 
         &:hover {
           color: #1890ff;
+          background: rgba(0,0,0,.025);
         }
       }
       // 面包屑导航
@@ -104,7 +105,7 @@
         display: inline-flex;
         height: 100%;
         align-items: center;
-        padding: 0 5px;
+        // padding: 0 20px;
       }
       // 头部操作列表
       > .header-menu {
@@ -146,13 +147,19 @@
 
     // 头部固定时生效
     .layout-header-fixed {
-      position: fixed !important;
+      position: fixed;
       width: calc(100% - #{$sidebar-width});
       z-index: 1;
+      transition: all .2s;
 
       & + .layout-main {
-        margin-top: $header-height !important;
+        margin-top: $header-height;
       }
+    }
+    // 头部固定且侧栏收起时生效
+    .header-fixed-collapsed {
+      position: fixed;
+      width: calc(100% - #{$sidebar-collapsed-width});
     }
 
     /***** 主要内容 main  *****/
@@ -163,4 +170,22 @@
 
   }
 
+  /***** 抽屉 *****/
+  .app-drawer {
+    position: fixed;
+    right: 0;
+    top: 30%;
+    background: #1890ff;
+    color: #fff;
+    padding: 10px 15px;
+    font-size: 20px;
+    border-radius: 8px 0 8px 0;
+    cursor: pointer;
+    box-shadow: 0 5px 5px 0 #aaa;
+    z-index: 1001;
+    transition: transform 0.3s cubic-bezier(0.9, 0, 0.3, 0.7);
+  }
+  .app-drawer-open {
+    transform: translateX(-256px);
+  }
 }
