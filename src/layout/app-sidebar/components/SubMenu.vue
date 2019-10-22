@@ -11,7 +11,7 @@
         :key="item.name"
       >
         <router-link :to="{ name: item.name }">
-          <a-icon type="pie-chart" />{{ item.name }}
+          <a-icon type="pie-chart" />{{ item.meta.title }}
         </router-link>
         <!-- <div><a-icon type="pie-chart" />{{ item.name }}</div> -->
       </a-menu-item>

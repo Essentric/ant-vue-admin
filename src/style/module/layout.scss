@@ -1,5 +1,9 @@
 @import './variable.scss';
 
+#app {
+  height: 100%;
+}
+
 /***** 布局容器 *****/
 .layout-container {
   display: flex;
@@ -179,7 +183,7 @@
     color: #fff;
     padding: 10px 15px;
     font-size: 20px;
-    border-radius: 8px 0 8px 0;
+    border-radius: 6px 0 6px 0;
     cursor: pointer;
     box-shadow: 0 5px 5px 0 #aaa;
     z-index: 1001;

@@ -34,8 +34,8 @@ export default {
     return {
       loading: false,
       loginForm: {
-        username: '',
-        password: '',
+        username: 'Essentric',
+        password: '123',
       },
     };
   },
@@ -50,11 +50,13 @@ export default {
       this.loading = true;
       this.login(this.loginForm)
         .then((response) => {
+          console.log(1);
           this.$message.success(response.data.msg, 1.5, () => {
+            this.loading = false;
             this.$router.push({ name: 'home' });
           });
-        }, () => this.$message.error('登录失败'))
-        .finally(() => { this.loading = false; });
+        }, () => this.$message.error('登录失败'));
+      // .finally(() => { this.loading = false; });
     },
   },
 };

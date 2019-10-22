@@ -1,5 +1,5 @@
 <template>
-  <a-dropdown placement="bottomCenter" :trigger="['hover']">
+  <a-dropdown placement="bottomCenter" :trigger="['click']">
     <div class="user-name" href="#">
       <span>admin</span>
       <img class="user-pic" src="../../../assets/user1.jpg" alt="user" />

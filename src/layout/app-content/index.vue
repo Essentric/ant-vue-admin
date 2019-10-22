@@ -16,12 +16,9 @@ export default {
 <style lang="scss" scoped>
   .fade-page-enter-active,
   .fade-page-leave-active {
-    transition: all 0.5s;
+    transition: all 0.35s;
   }
-  .fade-page-enter {
-    opacity: 0;
-    transform: translateX(-30px);
-  }
+  .fade-page-enter,
   .fade-page-leave-to {
     opacity: 0;
     transform: translateX(-30px);

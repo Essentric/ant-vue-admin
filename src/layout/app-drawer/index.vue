@@ -12,7 +12,6 @@
     >
       <p>固定顶栏：<a-switch v-model="header" /></p>
       <p>固定侧栏：<a-switch v-model="sider" /></p>
-      <p>{{ check }}</p>
     </a-drawer>
   </div>
 </template>

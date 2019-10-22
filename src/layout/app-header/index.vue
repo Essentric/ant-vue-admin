@@ -16,7 +16,7 @@
         </a-badge>
       </li>
       <li class="menu-item user-info">
-        <dropdown-menu />
+        <dropdown-menu style="height:100%" />
       </li>
       <li class="menu-item">
         <a-icon type="global" />
