@@ -3,7 +3,7 @@
     :key="props.menuInfo.key"
   >
     <span slot="title">
-      <a-icon type="mail" /><span>{{ props.menuInfo.meta['title'] }}</span>
+      <a-icon :type="props.menuInfo.meta['icon']" /><span>{{ props.menuInfo.meta['title'] }}</span>
     </span>
     <template v-for="item in props.menuInfo.children">
       <a-menu-item
@@ -11,9 +11,8 @@
         :key="item.name"
       >
         <router-link :to="{ name: item.name }">
-          <a-icon type="pie-chart" />{{ item.meta.title }}
+          <a-icon :type="item.meta['icon']" />{{ item.meta['title'] }}
         </router-link>
-        <!-- <div><a-icon type="pie-chart" />{{ item.name }}</div> -->
       </a-menu-item>
       <sub-menu
         v-else

@@ -16,7 +16,6 @@ export const commonRoutes = [
     name: 'home',
     component: () => import('./layout'),
     meta: { title: '首页', icon: 'home' },
-    // children: [],
   },
 ];
 
@@ -26,13 +25,13 @@ export const asyncRoutes = [
     path: '/list',
     name: 'list',
     component: () => import('./views/list'),
-    meta: { title: '列表', icon: 'list' },
+    meta: { title: '列表', icon: 'ordered-list' },
     children: [
       {
         path: 'sampleList',
         name: 'sampleList',
         component: () => import('./views/list/sampleList'),
-        meta: { title: '简单列表', icon: 'list' },
+        meta: { title: '简单列表', icon: 'ordered-list' },
       },
     ],
   },
@@ -50,6 +49,12 @@ export const asyncRoutes = [
         meta: { title: '简略表单', icon: 'form' },
       },
     ],
+  },
+  {
+    path: 'personal',
+    name: 'Personal',
+    component: () => import('./views/personal'),
+    meta: { title: '个人中心', icon: 'user' },
   },
 ];
 

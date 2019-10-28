@@ -19,8 +19,8 @@
       >
         <template v-for="item in userRoutes">
           <a-menu-item v-if="!item.children" :key="item.name">
-            <a-icon type="pie-chart" />
-            <span>{{item.meta['title']}}</span>
+            <a-icon :type="item.meta['icon']" />
+            <span>{{ item.meta['title'] }}</span>
           </a-menu-item>
           <sub-menu v-else :menu-info="item" :key="item.name"/>
         </template>

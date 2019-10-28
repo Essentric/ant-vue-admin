@@ -8,8 +8,8 @@
       <a-menu-item key="0">
         <a href="http://www.alipay.com/"><a-icon type="setting" /> 首 页</a>
       </a-menu-item>
-      <a-menu-item key="1">
-        <a href="http://www.taobao.com/"><a-icon type="user" />个人主页</a>
+      <a-menu-item key="1" @click="handleToPersonal">
+        <a href="javascript:;"><a-icon type="user" />个人中心</a>
       </a-menu-item>
       <a-menu-divider />
       <a-menu-item key="3" @click="handleLogout"><a-icon type="logout" />退 出</a-menu-item>
@@ -27,6 +27,12 @@ export default {
     handleLogout() {
       this.LOG_OUT();
       this.$router.push({ name: 'login' });
+    },
+    handleToPersonal() {
+      console.log(12312);
+      this.$router.push({
+        name: 'Personal',
+      });
     },
   },
 };
